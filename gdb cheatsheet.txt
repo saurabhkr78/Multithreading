@@ -1,0 +1,144 @@
+**GDB Commands Cheat Sheet**
+
+This cheat sheet provides a quick reference to essential GDB commands for debugging programs efficiently.
+
+---
+
+### 1. Starting and Running GDB
+
+```
+gdb <executable>  # Start GDB with a compiled executable
+run / r           # Run the program
+run <args>        # Run the program with arguments
+```
+
+---
+
+### 2. Setting and Managing Breakpoints
+
+```
+break <line>              # Set a breakpoint at a specific line
+break <function>          # Set a breakpoint at a function
+break <file>:<line>       # Set a breakpoint in a file at a specific line
+info breakpoints / info b # List all breakpoints
+delete <num>             # Remove a breakpoint by number
+enable <num>             # Enable a breakpoint
+disable <num>            # Disable a breakpoint
+```
+
+---
+
+### 3. Running and Controlling Execution
+
+```
+continue / c   # Resume execution until the next breakpoint
+next / n       # Execute the next line, stepping over function calls
+step / s       # Execute the next line, stepping into functions
+finish         # Continue until the current function returns
+until <line>   # Continue execution until reaching a specific line
+```
+
+---
+
+### 4. Inspecting Variables
+
+```
+print <variable> / p <variable>  # Print the value of a variable
+display <variable>               # Automatically display a variable’s value after every step
+info locals                      # Show all local variables
+set var <variable> = <value>     # Modify a variable's value
+```
+
+---
+
+### 5. Memory Inspection
+
+```
+x/<format> <address>  # Examine memory at a specific address
+info registers        # Show CPU register values
+```
+
+**Formats for `x/` command:**
+
+- `x/4xw &var`  -> Examine 4 words in hex
+- `x/s myStr`   -> Print string at `myStr`
+- `x/10i $pc`   -> Show 10 assembly instructions
+
+---
+
+### 6. Call Stack (Backtrace)
+
+```
+backtrace / bt  # Show the call stack
+frame <num>     # Switch to a specific stack frame
+info frame      # Show details of the current frame
+```
+
+---
+
+### 7. Debugging Threads
+
+```
+info threads    # Show all running threads
+thread <num>    # Switch to a specific thread
+```
+
+---
+
+### 8. Conditional Breakpoints
+
+```
+break <location> if <condition>  # Stop only if a condition is met
+Example: break 15 if x > 10
+```
+
+---
+
+### 9. Watchpoints (Tracking Variable Changes)
+
+```
+watch <variable>   # Stop when a variable changes
+rwatch <variable>  # Stop when a variable is read
+awatch <variable>  # Stop when a variable is read or written
+```
+
+---
+
+### 10. Disassembly & Assembly Debugging
+
+```
+disassemble <function>  # Show assembly for a function
+layout asm             # Show mixed source and assembly
+stepi / si             # Step one assembly instruction
+```
+
+---
+
+### 11. Saving and Loading Breakpoints
+
+```
+save breakpoints <file>  # Save breakpoints to a file
+source <file>            # Load breakpoints from a file
+```
+
+---
+
+### 12. Logging & Scripting
+
+```
+set logging on      # Log session output to a file
+source <script.gdb> # Run a GDB script
+```
+
+---
+
+### 13. Quitting GDB
+
+```
+quit / q  # Exit GDB
+```
+
+---
+
+This cheat sheet serves as a handy reference for debugging programs efficiently using GDB. For more in-depth details, refer to the official GDB documentation.
+
